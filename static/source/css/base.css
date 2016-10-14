@@ -1,0 +1,20 @@
+/*//////////////////////////////
+// Tean's Blog                //
+// http://www.tean.wang       //
+// version 1.0                //
+//////////////////////////////*/
+html, body, h1, h2, h3, h4, h5, h6, div, p, table, tr, td, ul, ol, li, dl, dt, dd, hr, a, span, img, i, b, strong, em { margin:0; padding:0;}
+
+article, aside, details, figcaption, figure, header, footer, section, summary, menu, nav {display:block;}
+
+html, body {height:100%;}
+body {font-size:14px; color:#333; font-family: "Helvetica neue",Helvetica,Tahoma,"lantinghei sc","Microsoft Yahei",sans-serif; font-weight:300}
+ul, ol {list-style-type: none;}
+a {text-decoration: none;}
+img {vertical-align: top;}
+
+input {outline: 0 none;}
+input[type="button"], input[type="submit"] {cursor: pointer;}
+
+.cf:after {content:''; display: table; clear: both;}
+.cf {*zoom: 1;}

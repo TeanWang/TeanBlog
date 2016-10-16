@@ -8,9 +8,9 @@ html, body, h1, h2, h3, h4, h5, h6, div, p, table, tr, td, ul, ol, li, dl, dt, d
 article, aside, details, figcaption, figure, header, footer, section, summary, menu, nav {display:block;}
 
 html, body {height:100%;}
-body {font-size:14px; color:#333; font-family: "Helvetica neue",Helvetica,Tahoma,"lantinghei sc","Microsoft Yahei",sans-serif; font-weight:300}
+body {font-size:14px; color:#333; background: #eef1eb; font-family: "Helvetica neue",Helvetica,Tahoma,"lantinghei sc","Microsoft Yahei",sans-serif; -webkit-font-smoothing: antialiased;}
 ul, ol {list-style-type: none;}
-a {text-decoration: none;}
+a {text-decoration: none; color:#333;}
 img {vertical-align: top;}
 
 input {outline: 0 none;}
@@ -18,3 +18,42 @@ input[type="button"], input[type="submit"] {cursor: pointer;}
 
 .cf:after {content:''; display: table; clear: both;}
 .cf {*zoom: 1;}
+
+::selection { background:rgba(0,128,0,.7); color: #fff }
+
+.top-container {width:100%; border-top:2px solid #008000; background: #fefefe; border-bottom: 1px solid #efefef; position: fixed; left:0; top:0; height: 56px; box-shadow: 0 0 5px rgba(0,0,0,.3);z-index: 8}
+.top-bar, .footer-bar {width:1260px; margin: 0 auto; }
+/*.logo {margin-top: 8px; float: left; display: block}*/
+.logo {margin-top: 6px; float: left; display: block; width: 45px; height:45px; background: #85cb16; border-radius: 10px; text-align: center; line-height: 45px;color:#fff; font-size: 22px; font-family: Arial; letter-spacing: 2px; box-shadow: 0 0 5px rgba(0,0,0,.2)}
+.small-logo {color:#85cB16; font-size: 22px; line-height: 40px; float: left; display: block; margin: 8px 0 0 10px;}
+.nav-bar {float: right}
+.nav-bar ul {}
+.nav-bar ul li {float: left; margin: 10px 0px 10px 8px}
+.nav-bar ul li a {display: block; color: #333; padding: 4px 28px; line-height: 32px; font-size: 15px; position:relative; top:0; transition: all .3s;}
+.nav-bar ul li a:hover {color:#85cb16; top:-5px; }
+.nav-bar ul li a span {position: absolute; left:0; top: 10px; width: 100%; text-align: center; transition: all .3s; opacity: 0; color:#999; font-size: 12px}
+.nav-bar ul li a:hover span {top:24px; opacity: 1; }
+
+.footer-container {width: 100%; background: rgba(0,0,0,.8); color:#999;}
+.footer-top {height: 40px; line-height: 40px; border-bottom: 1px solid #444; padding: 20px 0 10px;}
+.footer-bottom {padding: 20px 0 30px}
+.foot-info {float: left}
+.foot-link {padding: 0 0 10px}
+.foot-link a {color:#666; margin-right: 20px; font-size: 13px;transition: all .3s;}
+.foot-link a:hover {color:#85cb16; }
+.copyright {color:#666;}
+.foot-icon {float: right}
+.foot-icon ul {padding-top: 15px}
+.foot-icon ul li {float: left; margin-left: 15px}
+.foot-icon ul li a {color:#666; background: #222; width: 30px; height: 30px; line-height: 30px; display: block; border-radius: 50%; text-align: center}
+.foot-icon ul li a i {font-size: 22px; transition: all .3s;}
+.foot-icon ul li a:hover {background: #000;}
+.foot-icon ul li:nth-child(1) a:hover {color:#85cb16;}
+.foot-icon ul li:nth-child(2) a:hover {color:#00adf7;}
+.foot-icon ul li:nth-child(3) a:hover {color:#d25744;}
+.foot-icon ul li:nth-child(4) a:hover {color:#fff;}
+.foot-icon ul li:nth-child(5) a:hover {color:#f8bf14;}
+
+.return-top {position: fixed; right: 30px; bottom: -130px; width: 50px; height: 52px; cursor: pointer; color:#999}
+.return-top i {font-size:50px;}
+.return-top:hover {color:#85cB16}

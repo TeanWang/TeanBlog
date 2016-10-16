@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tean's Blog</title>
+    <meta name="viewport" content="initial-scale=1,width=device-width,user-scalable=no,maximum-scale=1.0">
+    <link rel="stylesheet" href="../static/source/css/base.css">
+    <link rel="stylesheet" href="../static/lib/icon/iconfont.css">
+    <link rel="stylesheet" href="../static/source/css/blog.css">
+</head>
+<body>
+<!-- Common Header -->
+<header class="top-container">
+    <div class="top-bar">
+        <!--<a href="/" class="logo"><img src="../static/source/imgs/common/logo.png" alt="Tean's Blog" width="148" height="40"></a>-->
+        <a href="/" class="logo">&lt;/&gt;</a>
+        <span class="small-logo">TEAN'S BLOG</span>
+        <nav class="nav-bar">
+            <ul class="cf">
+                <li><a href="/">首页 <span>Home</span></a></li>
+                <li><a href="/blog">博客 <span>Blog</span></a></li>
+                <li><a href="/lab">实验室 <span>Lab</span></a></li>
+                <li><a href="/card">名片 <span>Cards</span></a></li>
+                <li><a href="/about">关于 <span>About</span></a></li>
+                <li><a href="/message">留言 <span>Message</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<!-- #END Common Header -->
+<div class="blog-bg"></div>
+<div class="blog-container cf" >
+    <h1 class="blog-title">HTML5音乐列表播放器SMusic开发总结</h1>
+    <p class="blog-other-info">发布时间: 2016-10-12</p>
+    <div class="blog-content">
+        <p>最近在某乎上回答了一个问题 JavaScript里如何实现自定义对象的ondestroy方法？，回答与题主期望有所偏差但勉强可以作为一点个人经验分享出来。
+
+            在日常的JS组件开发中，往往会有一些较为复杂的DOM操作及事件监听，尤其是在处理UI层面的widgets时候更为明显。常常会花很多精力在对象的init上，而当组件需要被移除时则仅仅是把所在DOM草草的remove掉就算完事儿。
+
+            当然，绝大多数情况这样处理并没有什么不妥，因为事件监听时仅仅局限于所属的DOM自身，移除DOM后，只要对象的外部引用不再维系，相关的内存占用很快就会被当作垃圾回收掉（暂不讨论低版本 IE 内存回收的 BUG）。
+
+            其实个人在构建组件（对象）的时候是比较习惯于添加自定义方法destroy，用来手动销毁对象内部的一些引用。也就是小剧今天要说的仅靠移除DOM并不能达到销毁对象的几种情况。
+
+            当你的组件出现下面几种情况时需要特别注意。</p>
+        <h3> DOM事件监听越界</h3>
+        <p>
+            常规情况下，一个组件需要监听的仅仅是自身的DOM内的事件。偶尔也会有另一种情况，对象不得不操作自身之外的DOM。
+
+            拿常见的瀑布流组件为例，除了自身事件，还要监听页面的滚动、浏览器尺寸重置等事件。因此当瀑布流组件需要被移除时，简单的移除自身DOM并不能完整销毁组件对页面的影响。</p>
+        <p>load()：加载媒体文件，为播放做准备。</p>
+            <p>play()：加载（如果有必要）并播放文件。
+            pause()：暂停处于播放状态的文件。
+            buffered属性：返回媒体文件的缓冲范围（缓冲范围指的是已缓冲音视频的时间范围。如果用户在音视频中跳跃播放，会得到多个缓冲范围，buffered.length可以获取以缓冲区域的个数，buffered.end()可以获取以缓冲的时间）。
+            loop属性/loop()：为true时，循环播放当前媒体文件。loop(),如果媒体文件播放完毕时能重新播放，则返回true.
+            volume属性：获取和设置音量。
+            muted属性：设置（true）和取消(false)静音操作。
+            duration属性：获取整个媒体文件的播放时长，以s为单位。如果无法获取，则返回NaN。
+            startTime属性：返回最早的播放起始时间，一般是0.0，除非是缓冲过的文件，并且一部分已经不再缓冲区。
+            currentTime属性：以秒（S）为单位返回从开始播放到现在所用的事件。在播放过程中，可以设置currentTime来进行搜素，并定位到媒体文件的特定位置（如拖动进度跳转（快进）播放）。
+            currentSrc属性：以字符串形式返回当前正在播放或已加载的媒体文件。
+            ended属性/事件：如果媒体文件已经播放完毕，则返回true。并且，该属性也是一个事件，当媒体文件播放完毕时，才会触发ended事件，此时，我们可以将播放索引指到下一个。
+            canplay事件：当已加载的文件能够到达播放状态时，才会触发的事件。
+            timeupdate事件：当前媒体文件播放位置（currentTime）改变时，才会触发的事件。在播放过程中，是时时触发的，因此，可以监听这个事件来设置播放进度和播放时间的变化。
+            下面的图示例了缓冲部分和已播放部分的区别</p>
+    </div>
+    <div class="blog-reply">
+
+    </div>
+</div>
+<!-- Common Footer -->
+<footer class="footer-container">
+    <div class="footer-bar">
+        <p class="footer-top">Tean's Blog &bull; 菜鸟终将成为大神!</p>
+        <div class="footer-bottom cf">
+            <div class="foot-info">
+                <p class="foot-link">
+                    <a href="#">关于Tean</a>
+                    <a href="#">联系方式</a>
+                    <a href="#">大神榜</a>
+                    <a href="#">意见反馈</a>
+                </p>
+                <p class="copyright">&copy; 2016 code & design by Tean. Use NodeJS + MongoDB 粤ICP备13015845号-1</p>
+            </div>
+            <div class="foot-icon">
+                <ul class="cf">
+                    <li><a href="javascript:;"><i class="iconfont icon-weixin"></i></a></li>
+                    <li><a href="http://wpa.qq.com/msgrd?v=3&uin=373555563&site=qq&menu=yes"><i class="iconfont icon-QQ"></i></a></li>
+                    <li><a href="http://www.weibo.com/teanwang/" target="_blank"><i class="iconfont icon-iconfontweibowukuang"></i></a></li>
+                    <li><a href="https://github.com/TeanWang" target="_blank" ><i class="iconfont icon-github"></i></a></li>
+                    <li><a href="/blog"><i class="iconfont icon-youxiang"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- #END Common Footer -->
+<div class="return-top" id="returnTop"><i class="iconfont icon-icon05"></i></div>
+<script src="../static/lib/jquery/jquery-3.1.1.min.js"></script>
+<script src="../static/source/js/blog.js"></script>
+</body>
+</html>
